@@ -26,8 +26,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount static files (built frontend)
-app.mount("/static", StaticFiles(directory="dist"), name="static")
+# Mount static files (built frontend) - only if dist directory exists
+dist_path = os.path.join(os.path.dirname(__file__), "..", "dist")
+if os.path.exists(dist_path):
+    app.mount("/static", StaticFiles(directory=dist_path), name="static")
 
 class AlgorithmRequest(BaseModel):
     algorithm: str
@@ -44,8 +46,19 @@ class AlgorithmResponse(BaseModel):
 
 @app.get("/")
 async def serve_frontend():
-    """Serve the React frontend"""
-    return FileResponse(os.path.join("dist", "index.html"))
+    """Serve the React frontend or fallback message"""
+    if os.path.exists(dist_path):
+        return FileResponse(os.path.join(dist_path, "index.html"))
+    else:
+        return {
+            "message": "Algorithm Visualizer API",
+            "status": "Frontend not built - API only mode",
+            "endpoints": {
+                "api_docs": "/docs",
+                "health": "/api/health",
+                "algorithms": "/api/algorithms"
+            }
+        }
 
 @app.get("/{full_path:path}")
 async def serve_react_app(full_path: str):
@@ -54,8 +67,15 @@ async def serve_react_app(full_path: str):
     if full_path.startswith("api") or full_path.startswith("docs") or full_path.startswith("openapi"):
         raise HTTPException(status_code=404, detail="Not found")
     
-    # Serve frontend for all other routes
-    return FileResponse(os.path.join("dist", "index.html"))
+    # Serve frontend if available, otherwise return API info
+    if os.path.exists(dist_path):
+        return FileResponse(os.path.join(dist_path, "index.html"))
+    else:
+        return {
+            "message": "Frontend not available",
+            "status": "API only mode",
+            "available_endpoints": ["/docs", "/api/health", "/api/algorithms"]
+        }
 
 @app.get("/api")
 async def root():
