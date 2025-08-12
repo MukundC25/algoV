@@ -1,5 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
 import sys
@@ -18,11 +20,14 @@ app = FastAPI(
 # Add CORS middleware for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],  # Vite default ports
+    allow_origins=["*"],  # Allow all origins in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount static files (built frontend)
+app.mount("/static", StaticFiles(directory="dist"), name="static")
 
 class AlgorithmRequest(BaseModel):
     algorithm: str
@@ -38,8 +43,28 @@ class AlgorithmResponse(BaseModel):
     message: str
 
 @app.get("/")
+async def serve_frontend():
+    """Serve the React frontend"""
+    return FileResponse(os.path.join("dist", "index.html"))
+
+@app.get("/{full_path:path}")
+async def serve_react_app(full_path: str):
+    """Catch-all route for React Router - serve index.html for all frontend routes"""
+    # Skip API routes
+    if full_path.startswith("api") or full_path.startswith("docs") or full_path.startswith("openapi"):
+        raise HTTPException(status_code=404, detail="Not found")
+    
+    # Serve frontend for all other routes
+    return FileResponse(os.path.join("dist", "index.html"))
+
+@app.get("/api")
 async def root():
     return {"message": "Algorithm Visualizer API", "version": "1.0.0"}
+
+@app.get("/api/health")
+async def health_check():
+    """Health check endpoint"""
+    return {"status": "healthy", "timestamp": "2024-08-12T17:48:00Z"}
 
 @app.get("/api/algorithms")
 async def list_algorithms():
@@ -154,11 +179,6 @@ async def run_algorithm(request: AlgorithmRequest):
             
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error running algorithm: {str(e)}")
-
-@app.get("/health")
-async def health_check():
-    """Health check endpoint"""
-    return {"status": "healthy", "timestamp": "2024-08-12T17:48:00Z"}
 
 if __name__ == "__main__":
     import uvicorn

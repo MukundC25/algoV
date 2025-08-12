@@ -9,7 +9,8 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const API_BASE = 'http://localhost:8000'
+  // Use relative paths for production deployment
+  const API_BASE = '/api'
 
   useEffect(() => {
     fetchAlgorithms()
@@ -17,7 +18,7 @@ function App() {
 
   const fetchAlgorithms = async () => {
     try {
-      const response = await fetch(`${API_BASE}/api/algorithms`)
+      const response = await fetch(`${API_BASE}/algorithms`)
       const data = await response.json()
       setAlgorithms(data.algorithms)
     } catch (err) {
@@ -71,7 +72,7 @@ function App() {
         }
       }
 
-      const response = await fetch(`${API_BASE}/api/run`, {
+      const response = await fetch(`${API_BASE}/run`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -217,8 +218,8 @@ function App() {
       )}
 
       <div className="footer">
-        <p>Backend API running on {API_BASE}</p>
-        <p>Check <a href={`${API_BASE}/docs`} target="_blank" rel="noopener noreferrer">API Documentation</a></p>
+        <p>Algorithm Visualizer - Production Ready</p>
+        <p>Check <a href="/docs" target="_blank" rel="noopener noreferrer">API Documentation</a></p>
       </div>
     </div>
   )
