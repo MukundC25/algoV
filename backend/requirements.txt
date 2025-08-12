@@ -1,6 +1,3 @@
-# Python version compatibility
-python-version>=3.8
-
 # Core FastAPI dependencies
 fastapi==0.115.6
 uvicorn[standard]==0.32.1
