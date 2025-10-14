@@ -1,8 +1,0 @@
-# Core FastAPI dependencies
-fastapi==0.115.6
-uvicorn[standard]==0.32.1
-pydantic==2.10.4
-python-multipart==0.0.20
-
-# Additional dependencies for production
-gunicorn==23.0.0

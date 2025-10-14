@@ -1,49 +1,30 @@
-# Algorithm Visualizer
+# Algorithm visualizer project
 
-A full-stack application for visualizing and understanding algorithm complexity with interactive demonstrations.
+*Automatically synced with your [v0.dev](https://v0.dev) deployments*
 
-## Project Structure
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/mukunds-projects-dd8c0243/v0-algorithm-visualizer-project)
+[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/jQb1Ve9XoH0)
 
-```
-algoV/
-├── frontend/          # React + Vite frontend
-│   └── src/          # Frontend source code
-├── backend/           # FastAPI backend
-│   └── app/
-│       ├── core/     # Core algorithm implementations
-│       └── main.py   # FastAPI application
-└── README.md
-```
+## Overview
 
-## Features
+This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
+Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
 
-- **Algorithm Demonstrations**: Interactive examples of sorting and search algorithms
-- **Complexity Analysis**: Visual representation of time and space complexity
-- **Educational Content**: Step-by-step breakdowns of algorithm execution
+## Deployment
 
-## Development
+Your project is live at:
 
-### Backend (FastAPI)
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
+**[https://vercel.com/mukunds-projects-dd8c0243/v0-algorithm-visualizer-project](https://vercel.com/mukunds-projects-dd8c0243/v0-algorithm-visualizer-project)**
 
-### Frontend (React + Vite)
-```bash
-cd frontend
-npm install
-npm run dev
-```
+## Build your app
 
-## API Endpoints
+Continue building your app on:
 
-- `POST /api/run` - Execute algorithm with parameters
-- `GET /api/algorithms` - List available algorithms
+**[https://v0.dev/chat/projects/jQb1Ve9XoH0](https://v0.dev/chat/projects/jQb1Ve9XoH0)**
 
-## Technologies
+## How It Works
 
-- **Backend**: Python, FastAPI
-- **Frontend**: React, Vite
-- **Algorithms**: Custom implementations for educational purposes
+1. Create and modify your project using [v0.dev](https://v0.dev)
+2. Deploy your chats from the v0 interface
+3. Changes are automatically pushed to this repository
+4. Vercel deploys the latest version from this repository
