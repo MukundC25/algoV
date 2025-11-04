@@ -777,36 +777,36 @@ export default function AlgorithmVisualizer() {
   const isSearchAlgorithm = algorithms[selectedAlgorithm].type === "searching"
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-4">
+    <div className="min-h-screen bg-white text-gray-900 p-4">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-white">Algorithm Visualizer</h1>
-          <p className="text-lg text-gray-300">
+          <h1 className="text-4xl font-bold text-gray-900">Algorithm Visualizer</h1>
+          <p className="text-lg text-gray-600">
             Interactive platform for understanding algorithms through visualization and AI assistance
           </p>
         </div>
 
         {/* Controls */}
-        <Card className="bg-gray-800 border-gray-700">
+        <Card className="bg-white border-gray-200">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-white">
+            <CardTitle className="flex items-center gap-2 text-gray-900">
               <Settings className="w-5 h-5" />
               Algorithm Controls
             </CardTitle>
-            <CardDescription className="text-gray-300">
+            <CardDescription className="text-gray-600">
               Select an algorithm and customize the visualization parameters
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="space-y-2">
-                <Label className="text-gray-200">Algorithm</Label>
+                <Label className="text-gray-700">Algorithm</Label>
                 <Select value={selectedAlgorithm} onValueChange={(value) => setSelectedAlgorithm(value)}>
-                  <SelectTrigger className="bg-gray-700 border-gray-600 text-white">
+                  <SelectTrigger className="bg-white border-gray-300 text-gray-900">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-700 border-gray-600">
+                  <SelectContent className="bg-white border-gray-300">
                     <SelectItem value="bubble">Bubble Sort</SelectItem>
                     <SelectItem value="quick">Quick Sort</SelectItem>
                     <SelectItem value="merge">Merge Sort</SelectItem>
@@ -819,26 +819,26 @@ export default function AlgorithmVisualizer() {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-gray-200">Speed: {speed[0]}%</Label>
+                <Label className="text-gray-700">Speed: {speed[0]}%</Label>
                 <Slider value={speed} onValueChange={setSpeed} max={100} min={1} step={1} className="w-full" />
               </div>
 
               {!isSearchAlgorithm && (
                 <div className="space-y-2">
-                  <Label className="text-gray-200">Array Size: {arraySize[0]}</Label>
+                  <Label className="text-gray-700">Array Size: {arraySize[0]}</Label>
                   <Slider value={arraySize} onValueChange={setArraySize} max={50} min={5} step={1} className="w-full" />
                 </div>
               )}
 
               {isSearchAlgorithm && (
                 <div className="space-y-2">
-                  <Label className="text-gray-200">Search Target</Label>
+                  <Label className="text-gray-700">Search Target</Label>
                   <Input
                     type="number"
                     value={searchTarget}
                     onChange={(e) => setSearchTarget(e.target.value)}
                     placeholder="Enter target value"
-                    className="bg-gray-700 border-gray-600 text-white"
+                    className="bg-white border-gray-300 text-gray-900"
                   />
                 </div>
               )}
@@ -852,7 +852,7 @@ export default function AlgorithmVisualizer() {
               <Button
                 onClick={handleReset}
                 variant="outline"
-                className="border-gray-600 text-gray-200 hover:bg-gray-700 bg-transparent"
+                className="border-gray-300 text-gray-900 hover:bg-gray-100 bg-transparent"
               >
                 <RotateCcw className="w-4 h-4 mr-2" />
                 Reset
@@ -861,7 +861,7 @@ export default function AlgorithmVisualizer() {
                 onClick={handleStepForward}
                 variant="outline"
                 disabled={state === "running" || currentStep >= steps.length - 1}
-                className="border-gray-600 text-gray-200 hover:bg-gray-700"
+                className="border-gray-300 text-gray-900 hover:bg-gray-100"
               >
                 <SkipForward className="w-4 h-4 mr-2" />
                 Step
@@ -869,14 +869,14 @@ export default function AlgorithmVisualizer() {
               <Button
                 onClick={generateRandomArray}
                 variant="outline"
-                className="border-gray-600 text-gray-200 hover:bg-gray-700 bg-transparent"
+                className="border-gray-300 text-gray-900 hover:bg-gray-100 bg-transparent"
               >
                 Generate Random
               </Button>
               <Button
                 onClick={() => setShowChatbot(!showChatbot)}
                 variant="outline"
-                className="border-blue-600 text-blue-400 hover:bg-blue-900"
+                className="border-blue-300 text-blue-600 hover:bg-blue-50"
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 AI Assistant
@@ -884,18 +884,18 @@ export default function AlgorithmVisualizer() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-gray-200">Custom Input (comma-separated numbers)</Label>
+              <Label className="text-gray-700">Custom Input (comma-separated numbers)</Label>
               <div className="flex gap-2">
                 <Input
                   value={customInput}
                   onChange={(e) => setCustomInput(e.target.value)}
                   placeholder="e.g., 64, 34, 25, 12, 22, 11, 90"
-                  className="flex-1 bg-gray-700 border-gray-600 text-white"
+                  className="flex-1 bg-white border-gray-300 text-gray-900"
                 />
                 <Button
                   onClick={handleCustomInput}
                   variant="outline"
-                  className="border-gray-600 text-gray-200 hover:bg-gray-700 bg-transparent"
+                  className="border-gray-300 text-gray-900 hover:bg-gray-100 bg-transparent"
                 >
                   Apply
                 </Button>
@@ -906,21 +906,21 @@ export default function AlgorithmVisualizer() {
 
         {/* Algorithm Info */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg text-white">{algorithms[selectedAlgorithm].name}</CardTitle>
+              <CardTitle className="text-lg text-gray-900">{algorithms[selectedAlgorithm].name}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-400">Type:</span>
-                  <Badge variant="secondary" className="bg-gray-700 text-gray-200">
+                  <span className="text-sm text-gray-600">Type:</span>
+                  <Badge variant="secondary" className="bg-gray-100 text-gray-900">
                     {algorithms[selectedAlgorithm].type}
                   </Badge>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-400">Complexity:</span>
-                  <Badge variant="outline" className="border-gray-600 text-gray-200">
+                  <span className="text-sm text-gray-600">Complexity:</span>
+                  <Badge variant="outline" className="border-gray-300 text-gray-900">
                     {algorithms[selectedAlgorithm].complexity}
                   </Badge>
                 </div>
@@ -928,25 +928,25 @@ export default function AlgorithmVisualizer() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg text-white">Statistics</CardTitle>
+              <CardTitle className="text-lg text-gray-900">Statistics</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-400">Comparisons:</span>
-                  <span className="font-mono text-white">{stats.comparisons}</span>
+                  <span className="text-sm text-gray-600">Comparisons:</span>
+                  <span className="font-mono text-gray-900">{stats.comparisons}</span>
                 </div>
                 {!isSearchAlgorithm && (
                   <div className="flex justify-between">
-                    <span className="text-sm text-gray-400">Swaps:</span>
-                    <span className="font-mono text-white">{stats.swaps}</span>
+                    <span className="text-sm text-gray-600">Swaps:</span>
+                    <span className="font-mono text-gray-900">{stats.swaps}</span>
                   </div>
                 )}
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-400">Progress:</span>
-                  <span className="font-mono text-white">
+                  <span className="text-sm text-gray-600">Progress:</span>
+                  <span className="font-mono text-gray-900">
                     {steps.length > 0 ? `${currentStep + 1}/${steps.length}` : "0/0"}
                   </span>
                 </div>
@@ -954,12 +954,12 @@ export default function AlgorithmVisualizer() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg text-white">Current Step</CardTitle>
+              <CardTitle className="text-lg text-gray-900">Current Step</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-gray-700">
                 {steps.length > 0 && currentStep < steps.length
                   ? steps[currentStep].description
                   : "Ready to start visualization"}
@@ -973,25 +973,25 @@ export default function AlgorithmVisualizer() {
           {/* Algorithm Explanation */}
           <div className="lg:col-span-2 space-y-6">
             {/* Algorithm Explanation */}
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="bg-white border-gray-200">
               <CardHeader>
-                <CardTitle className="text-white">How {algorithms[selectedAlgorithm].name} Works</CardTitle>
-                <CardDescription className="text-gray-300">Understanding the algorithm step by step</CardDescription>
+                <CardTitle className="text-gray-900">How {algorithms[selectedAlgorithm].name} Works</CardTitle>
+                <CardDescription className="text-gray-600">Understanding the algorithm step by step</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {selectedAlgorithm === "bubble" && (
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-lg text-white">Algorithm Steps:</h4>
-                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-300">
+                    <h4 className="font-semibold text-lg text-gray-900">Algorithm Steps:</h4>
+                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
                       <li>Compare adjacent elements in the array</li>
                       <li>If the left element is greater than the right, swap them</li>
                       <li>Continue through the entire array</li>
                       <li>Repeat until no more swaps are needed</li>
                       <li>The largest elements "bubble up" to the end</li>
                     </ol>
-                    <div className="bg-gray-700 p-3 rounded-lg">
-                      <h5 className="font-medium mb-2 text-white">Why it's called "Bubble Sort":</h5>
-                      <p className="text-sm text-gray-300">
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <h5 className="font-medium mb-2 text-gray-900">Why it's called "Bubble Sort":</h5>
+                      <p className="text-sm text-gray-700">
                         Like bubbles rising to the surface, the largest elements gradually move to the end of the array
                         with each pass.
                       </p>
@@ -1001,17 +1001,17 @@ export default function AlgorithmVisualizer() {
 
                 {selectedAlgorithm === "quick" && (
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-lg text-white">Algorithm Steps:</h4>
-                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-300">
+                    <h4 className="font-semibold text-lg text-gray-900">Algorithm Steps:</h4>
+                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
                       <li>Choose a pivot element (usually the last element)</li>
                       <li>Partition: move smaller elements to the left, larger to the right</li>
                       <li>Place the pivot in its correct sorted position</li>
                       <li>Recursively apply the same process to left and right subarrays</li>
                       <li>Continue until all elements are in their correct positions</li>
                     </ol>
-                    <div className="bg-gray-700 p-3 rounded-lg">
-                      <h5 className="font-medium mb-2 text-white">Key Insight:</h5>
-                      <p className="text-sm text-gray-300">
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <h5 className="font-medium mb-2 text-gray-900">Key Insight:</h5>
+                      <p className="text-sm text-gray-700">
                         Quick Sort uses "divide and conquer" - it breaks the problem into smaller subproblems and solves
                         them independently.
                       </p>
@@ -1021,17 +1021,17 @@ export default function AlgorithmVisualizer() {
 
                 {selectedAlgorithm === "linear" && (
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-lg text-white">Algorithm Steps:</h4>
-                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-300">
+                    <h4 className="font-semibold text-lg text-gray-900">Algorithm Steps:</h4>
+                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
                       <li>Start from the first element of the array</li>
                       <li>Compare the current element with the target value</li>
                       <li>If they match, return the position (found!)</li>
                       <li>If not, move to the next element</li>
                       <li>Repeat until found or end of array is reached</li>
                     </ol>
-                    <div className="bg-gray-700 p-3 rounded-lg">
-                      <h5 className="font-medium mb-2 text-white">When to use Linear Search:</h5>
-                      <p className="text-sm text-gray-300">
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <h5 className="font-medium mb-2 text-gray-900">When to use Linear Search:</h5>
+                      <p className="text-sm text-gray-700">
                         Best for unsorted arrays or when you need to find all occurrences. Simple but can be slow for
                         large datasets.
                       </p>
@@ -1041,8 +1041,8 @@ export default function AlgorithmVisualizer() {
 
                 {selectedAlgorithm === "binary" && (
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-lg text-white">Algorithm Steps:</h4>
-                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-300">
+                    <h4 className="font-semibold text-lg text-gray-900">Algorithm Steps:</h4>
+                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
                       <li>Array must be sorted first</li>
                       <li>Find the middle element</li>
                       <li>Compare middle element with target</li>
@@ -1050,9 +1050,9 @@ export default function AlgorithmVisualizer() {
                       <li>If target is larger, search right half</li>
                       <li>Repeat until found or search space is empty</li>
                     </ol>
-                    <div className="bg-gray-700 p-3 rounded-lg">
-                      <h5 className="font-medium mb-2 text-white">Why it's so fast:</h5>
-                      <p className="text-sm text-gray-300">
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <h5 className="font-medium mb-2 text-gray-900">Why it's so fast:</h5>
+                      <p className="text-sm text-gray-700">
                         Each comparison eliminates half of the remaining elements, making it much faster than linear
                         search for sorted data.
                       </p>
@@ -1063,10 +1063,10 @@ export default function AlgorithmVisualizer() {
             </Card>
 
             {/* Enhanced Visualization */}
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="bg-white border-gray-200">
               <CardHeader>
-                <CardTitle className="text-white">Visual Representation</CardTitle>
-                <CardDescription className="text-gray-300">
+                <CardTitle className="text-gray-900">Visual Representation</CardTitle>
+                <CardDescription className="text-gray-600">
                   {isSearchAlgorithm
                     ? `Searching for value: ${searchTarget || "N/A"}`
                     : "Watch how elements move and get sorted"}
@@ -1075,7 +1075,7 @@ export default function AlgorithmVisualizer() {
               <CardContent>
                 <div className="space-y-6">
                   {/* Array Visualization */}
-                  <div className="bg-gray-900 rounded-lg p-6 border-2 border-gray-600">
+                  <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-300">
                     <div className="flex items-end justify-center gap-2 min-h-[300px] overflow-x-auto pb-4">
                       {array.map((element, index) => (
                         <div
@@ -1083,7 +1083,7 @@ export default function AlgorithmVisualizer() {
                           className="flex flex-col items-center space-y-2 transition-all duration-500 ease-in-out"
                         >
                           {/* Element indicator */}
-                          <div className="text-xs font-medium text-gray-400 h-4">
+                          <div className="text-xs font-medium text-gray-600 h-4">
                             {element.isComparing && "👀"}
                             {element.isSwapping && "🔄"}
                             {element.isPivot && "📍"}
@@ -1095,18 +1095,18 @@ export default function AlgorithmVisualizer() {
                           <div
                             className={`
                       relative w-8 rounded-t-lg border-2 transition-all duration-500 ease-in-out flex items-end justify-center
-                      ${element.isComparing ? "bg-yellow-400 border-yellow-500 shadow-lg transform scale-110" : ""}
-                      ${element.isSwapping ? "bg-red-400 border-red-500 shadow-lg transform scale-110 animate-pulse" : ""}
-                      ${element.isPivot ? "bg-purple-400 border-purple-500 shadow-lg" : ""}
-                      ${element.isSorted ? "bg-green-400 border-green-500" : ""}
-                      ${element.isFound ? "bg-blue-400 border-blue-500 shadow-lg transform scale-110" : ""}
+                      ${element.isComparing ? "bg-yellow-300 border-yellow-500 shadow-lg transform scale-110" : ""}
+                      ${element.isSwapping ? "bg-red-400 border-red-600 shadow-lg transform scale-110 animate-pulse" : ""}
+                      ${element.isPivot ? "bg-purple-400 border-purple-600 shadow-lg" : ""}
+                      ${element.isSorted ? "bg-green-400 border-green-600" : ""}
+                      ${element.isFound ? "bg-blue-400 border-blue-600 shadow-lg transform scale-110" : ""}
                       ${
                         !element.isComparing &&
                         !element.isSwapping &&
                         !element.isPivot &&
                         !element.isSorted &&
                         !element.isFound
-                          ? "bg-gray-500 border-gray-400"
+                          ? "bg-gray-300 border-gray-400"
                           : ""
                       }
                     `}
@@ -1120,7 +1120,7 @@ export default function AlgorithmVisualizer() {
                           </div>
 
                           {/* Index label */}
-                          <div className="text-xs text-gray-400 font-mono">[{index}]</div>
+                          <div className="text-xs text-gray-600 font-mono">[{index}]</div>
                         </div>
                       ))}
                     </div>
@@ -1128,36 +1128,36 @@ export default function AlgorithmVisualizer() {
 
                   {/* Enhanced Legend with explanations */}
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 text-sm">
-                    <div className="flex items-center gap-2 p-2 bg-gray-700 rounded">
-                      <div className="w-4 h-4 bg-gray-500 border border-gray-400 rounded"></div>
-                      <span className="text-gray-200">Unsorted</span>
+                    <div className="flex items-center gap-2 p-2 bg-gray-100 rounded">
+                      <div className="w-4 h-4 bg-gray-300 border border-gray-400 rounded"></div>
+                      <span className="text-gray-900">Unsorted</span>
                     </div>
-                    <div className="flex items-center gap-2 p-2 bg-yellow-900 rounded">
-                      <div className="w-4 h-4 bg-yellow-400 border border-yellow-500 rounded"></div>
-                      <span className="text-gray-200">Comparing 👀</span>
+                    <div className="flex items-center gap-2 p-2 bg-yellow-100 rounded">
+                      <div className="w-4 h-4 bg-yellow-300 border border-yellow-500 rounded"></div>
+                      <span className="text-gray-900">Comparing 👀</span>
                     </div>
-                    <div className="flex items-center gap-2 p-2 bg-red-900 rounded">
-                      <div className="w-4 h-4 bg-red-400 border border-red-500 rounded"></div>
-                      <span className="text-gray-200">Swapping 🔄</span>
+                    <div className="flex items-center gap-2 p-2 bg-red-100 rounded">
+                      <div className="w-4 h-4 bg-red-400 border border-red-600 rounded"></div>
+                      <span className="text-gray-900">Swapping 🔄</span>
                     </div>
-                    <div className="flex items-center gap-2 p-2 bg-purple-900 rounded">
-                      <div className="w-4 h-4 bg-purple-400 border border-purple-500 rounded"></div>
-                      <span className="text-gray-200">Pivot 📍</span>
+                    <div className="flex items-center gap-2 p-2 bg-purple-100 rounded">
+                      <div className="w-4 h-4 bg-purple-400 border border-purple-600 rounded"></div>
+                      <span className="text-gray-900">Pivot 📍</span>
                     </div>
-                    <div className="flex items-center gap-2 p-2 bg-green-900 rounded">
-                      <div className="w-4 h-4 bg-green-400 border border-green-500 rounded"></div>
-                      <span className="text-gray-200">Sorted ✅</span>
+                    <div className="flex items-center gap-2 p-2 bg-green-100 rounded">
+                      <div className="w-4 h-4 bg-green-400 border border-green-600 rounded"></div>
+                      <span className="text-gray-900">Sorted ✅</span>
                     </div>
-                    <div className="flex items-center gap-2 p-2 bg-blue-900 rounded">
-                      <div className="w-4 h-4 bg-blue-400 border border-blue-500 rounded"></div>
-                      <span className="text-gray-200">Found 🎯</span>
+                    <div className="flex items-center gap-2 p-2 bg-blue-100 rounded">
+                      <div className="w-4 h-4 bg-blue-400 border border-blue-600 rounded"></div>
+                      <span className="text-gray-900">Found 🎯</span>
                     </div>
                   </div>
 
                   {/* Step Navigator */}
                   {steps.length > 0 && (
-                    <div className="bg-gray-700 p-4 rounded-lg">
-                      <h4 className="font-semibold mb-3 text-white">Step Navigator</h4>
+                    <div className="bg-gray-100 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-3 text-gray-900">Step Navigator</h4>
                       <div className="flex gap-1 overflow-x-auto pb-2">
                         {steps.map((step, index) => (
                           <button
@@ -1170,10 +1170,10 @@ export default function AlgorithmVisualizer() {
                       px-3 py-1 rounded text-xs font-medium whitespace-nowrap transition-colors
                       ${
                         index === currentStep
-                          ? "bg-blue-500 text-white"
+                          ? "bg-blue-600 text-white"
                           : index < currentStep
                             ? "bg-green-600 text-white hover:bg-green-500"
-                            : "bg-gray-600 text-gray-200 hover:bg-gray-500"
+                            : "bg-gray-300 text-gray-900 hover:bg-gray-400"
                       }
                     `}
                           >
@@ -1181,7 +1181,7 @@ export default function AlgorithmVisualizer() {
                           </button>
                         ))}
                       </div>
-                      <p className="text-xs text-gray-400 mt-2">
+                      <p className="text-xs text-gray-600 mt-2">
                         Click any step number to jump to that point in the algorithm
                       </p>
                     </div>
@@ -1194,17 +1194,17 @@ export default function AlgorithmVisualizer() {
           {/* AI Chatbot */}
           {showChatbot && (
             <div className="lg:col-span-1">
-              <Card className="bg-gray-800 border-gray-700 h-[600px] flex flex-col">
+              <Card className="bg-white border-gray-200 h-[600px] flex flex-col">
                 <CardHeader className="pb-3">
-                  <CardTitle className="flex items-center gap-2 text-white">
-                    <Bot className="w-5 h-5 text-blue-400" />
+                  <CardTitle className="flex items-center gap-2 text-gray-900">
+                    <Bot className="w-5 h-5 text-blue-600" />
                     AI Learning Assistant
                   </CardTitle>
-                  <CardDescription className="text-gray-300">Ask questions and test your knowledge</CardDescription>
+                  <CardDescription className="text-gray-600">Ask questions and test your knowledge</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col space-y-4">
                   {/* Chat Messages */}
-                  <div className="flex-1 overflow-y-auto space-y-3 bg-gray-900 p-3 rounded-lg">
+                  <div className="flex-1 overflow-y-auto space-y-3 bg-gray-50 p-3 rounded-lg">
                     {chatMessages.map((message, index) => (
                       <div
                         key={index}
@@ -1225,20 +1225,20 @@ export default function AlgorithmVisualizer() {
                               message.type === "user"
                                 ? "bg-blue-600 text-white"
                                 : message.type === "code"
-                                  ? "bg-gray-800 border border-gray-600"
-                                  : "bg-gray-700 text-gray-100"
+                                  ? "bg-gray-200 border border-gray-300"
+                                  : "bg-gray-100 text-gray-900"
                             }`}
                           >
                             {message.type === "code" ? (
                               <div className="space-y-2">
-                                <div className="flex items-center gap-2 text-sm text-gray-400">
+                                <div className="flex items-center gap-2 text-sm text-gray-700">
                                   <Code className="w-4 h-4" />
                                   {message.content.language.toUpperCase()} Code Example
                                 </div>
-                                <pre className="text-xs bg-gray-900 p-2 rounded overflow-x-auto">
+                                <pre className="text-xs bg-white p-2 rounded overflow-x-auto">
                                   <code>{message.content.content}</code>
                                 </pre>
-                                <div className="text-sm text-gray-300 border-t border-gray-600 pt-2">
+                                <div className="text-sm text-gray-700 border-t border-gray-300 pt-2">
                                   <strong>Explanation:</strong> {message.content.explanation}
                                 </div>
                               </div>
@@ -1257,7 +1257,7 @@ export default function AlgorithmVisualizer() {
                       onClick={askSampleQuestion}
                       variant="outline"
                       size="sm"
-                      className="w-full border-blue-600 text-blue-400 hover:bg-blue-900 bg-transparent"
+                      className="w-full border-blue-300 text-blue-600 hover:bg-blue-50 bg-transparent"
                     >
                       Ask Me a Question 🤔
                     </Button>
@@ -1266,16 +1266,16 @@ export default function AlgorithmVisualizer() {
                   {/* Answer Input */}
                   {currentQuestion && (
                     <div className="space-y-2">
-                      <Label className="text-gray-200">Your Answer:</Label>
+                      <Label className="text-gray-700">Your Answer:</Label>
                       <div className="flex gap-2">
                         <Textarea
                           value={userAnswer}
                           onChange={(e) => setUserAnswer(e.target.value)}
                           placeholder="Type your answer here..."
-                          className="flex-1 bg-gray-700 border-gray-600 text-white resize-none"
+                          className="flex-1 bg-white border-gray-300 text-gray-900 resize-none"
                           rows={3}
                         />
-                        <Button onClick={submitAnswer} size="sm" className="self-end" disabled={!userAnswer.trim()}>
+                        <Button onClick={submitAnswer} size="sm" disabled={!userAnswer.trim()}>
                           <Send className="w-4 h-4" />
                         </Button>
                       </div>
@@ -1289,18 +1289,18 @@ export default function AlgorithmVisualizer() {
           {/* Current Step Explanation (when chatbot is closed) */}
           {!showChatbot && (
             <div className="lg:col-span-1">
-              <Card className="bg-gray-800 border-gray-700">
+              <Card className="bg-white border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-white">Current Step Explanation</CardTitle>
-                  <CardDescription className="text-gray-300">What's happening right now</CardDescription>
+                  <CardTitle className="text-gray-900">Current Step Explanation</CardTitle>
+                  <CardDescription className="text-gray-600">What's happening right now</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <div className="bg-blue-900 border-l-4 border-blue-400 p-4 rounded">
-                      <h4 className="font-semibold text-blue-200 mb-2">
+                    <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                      <h4 className="font-semibold text-blue-900 mb-2">
                         Step {steps.length > 0 ? currentStep + 1 : 0} of {steps.length}
                       </h4>
-                      <p className="text-blue-100">
+                      <p className="text-blue-800">
                         {steps.length > 0 && currentStep < steps.length
                           ? steps[currentStep].description
                           : "Click 'Start' to begin the algorithm visualization"}
@@ -1310,24 +1310,24 @@ export default function AlgorithmVisualizer() {
                     {steps.length > 0 && (
                       <div className="space-y-3">
                         <div className="grid grid-cols-2 gap-4">
-                          <div className="bg-gray-700 p-3 rounded">
-                            <div className="text-sm text-gray-400">Comparisons Made</div>
-                            <div className="text-2xl font-bold text-white">{stats.comparisons}</div>
+                          <div className="bg-gray-100 p-3 rounded">
+                            <div className="text-sm text-gray-600">Comparisons Made</div>
+                            <div className="text-2xl font-bold text-gray-900">{stats.comparisons}</div>
                           </div>
                           {!isSearchAlgorithm && (
-                            <div className="bg-gray-700 p-3 rounded">
-                              <div className="text-sm text-gray-400">Swaps Made</div>
-                              <div className="text-2xl font-bold text-white">{stats.swaps}</div>
+                            <div className="bg-gray-100 p-3 rounded">
+                              <div className="text-sm text-gray-600">Swaps Made</div>
+                              <div className="text-2xl font-bold text-gray-900">{stats.swaps}</div>
                             </div>
                           )}
                         </div>
 
                         <div className="space-y-2">
-                          <div className="flex justify-between text-sm text-gray-300">
+                          <div className="flex justify-between text-sm text-gray-700">
                             <span>Progress</span>
                             <span>{Math.round(((currentStep + 1) / steps.length) * 100)}%</span>
                           </div>
-                          <div className="w-full bg-gray-700 rounded-full h-2">
+                          <div className="w-full bg-gray-300 rounded-full h-2">
                             <div
                               className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                               style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
