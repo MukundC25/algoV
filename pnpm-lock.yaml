@@ -178,7 +178,7 @@ importers:
         specifier: ^3.4.17
         version: 3.4.17
       typescript:
-        specifier: 5.9.3
+        specifier: ^5
         version: 5.9.3
 
 packages:
